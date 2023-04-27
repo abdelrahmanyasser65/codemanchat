@@ -8,5 +8,5 @@ class ColorManager{
   static Color grey=Colors.grey;
   static Color lightGrey=HexColor("#EDEDED");
   static Color hintTextColor=HexColor("#B7B7B7");
-  
+  static Color subTitleColor=HexColor("#666666");
 }

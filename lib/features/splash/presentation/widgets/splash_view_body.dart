@@ -28,7 +28,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
 
     Future.delayed(AppConstants.splashDelay,
             (){
-          GoRouter.of(context).push(
+          GoRouter.of(context).pushReplacement(
            AppRouter.rLoginView
           );
         }

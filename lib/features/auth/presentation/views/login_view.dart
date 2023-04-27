@@ -1,5 +1,5 @@
 import 'package:codemanchat/core/ersources/colors.dart';
-import 'package:codemanchat/features/auth/presentation/views/widgets/login_view_body.dart';
+import 'package:codemanchat/features/auth/presentation/views/widgets/login/login_view_body.dart';
 import 'package:flutter/material.dart';
 
 class LoginView extends StatelessWidget {
