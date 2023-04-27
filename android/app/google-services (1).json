@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "764388906207",
+    "project_id": "code-man-chat",
+    "storage_bucket": "code-man-chat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764388906207:android:c8a362e92b2a7714e2056a",
+        "android_client_info": {
+          "package_name": "com.example.codemanchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "764388906207-659pd0skj00jrst8cp0mqh763n2md24g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbQd5_u-jsTheMWAhs1rgJVb3MDMGPFqE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "764388906207-659pd0skj00jrst8cp0mqh763n2md24g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
