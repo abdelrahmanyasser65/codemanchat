@@ -8,9 +8,9 @@ class CustomTextField extends StatelessWidget {
       required this.controller,
       this.onChanged,
       required this.keyboardType,
-        this.maxLines=1,
-        required this.hintText,
-       this.obscureText=false})
+      this.maxLines = 1,
+      required this.hintText,
+      this.obscureText = false})
       : super(key: key);
   final TextEditingController controller;
   final Function(String)? onChanged;
@@ -18,6 +18,7 @@ class CustomTextField extends StatelessWidget {
   final bool obscureText;
   final int maxLines;
   final String hintText;
+
   @override
   Widget build(BuildContext context) {
     return TextField(
@@ -39,6 +40,13 @@ class CustomTextField extends StatelessWidget {
         disabledBorder: buildOutlineInputBorder(),
         focusedBorder: buildOutlineInputBorder(),
       ),
+    );
+  }
+
+  OutlineInputBorder buildOutlineInputBorder() {
+    return OutlineInputBorder(
+      borderSide: BorderSide.none,
+      borderRadius: BorderRadius.circular(12),
     );
   }
 }

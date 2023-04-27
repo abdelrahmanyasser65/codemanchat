@@ -52,10 +52,5 @@ final TextEditingController passwordController=TextEditingController();
     );
   }
 
-  OutlineInputBorder buildOutlineInputBorder() {
-    return OutlineInputBorder(
-            borderSide: BorderSide.none,
-              borderRadius: BorderRadius.circular(12),
-            );
-  }
+
 }
