@@ -31,9 +31,14 @@ class SignUpViewBody extends StatelessWidget {
        const FireSideSignUp(),
         CenterSideSignUp(),
         CustomButton(
+          onPressed: (){
+            var auth=FirebaseAuth
+          },
             backGroundColor: ColorManager.primary,
             textColor: ColorManager.white,
-            text: Strings.signUp),
+            text: Strings.signUp
+
+        ),
         SizedBox(
           height: Sized.s2,
         ),

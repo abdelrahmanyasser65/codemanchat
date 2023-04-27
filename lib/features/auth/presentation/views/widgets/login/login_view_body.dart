@@ -28,6 +28,7 @@ class LoginViewBody extends StatelessWidget {
        const WelcomeRow(),
         CenterSideLogin(),
         CustomButton(
+          onPressed: (){},
             backGroundColor: ColorManager.primary,
             textColor: ColorManager.white,
             text: Strings.login),

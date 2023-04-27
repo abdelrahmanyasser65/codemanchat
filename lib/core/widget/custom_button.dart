@@ -3,13 +3,16 @@ import 'package:codemanchat/core/ersources/values.dart';
 import 'package:codemanchat/core/widget/custom_text.dart';
 import 'package:flutter/material.dart';
 class CustomButton extends StatelessWidget {
-  const CustomButton({Key? key, required this.backGroundColor, required this.textColor, this.borderRadius, required this.text, this.fontSize, this.onPressed}) : super(key: key);
+  const CustomButton({Key? key,
+    required this.backGroundColor,
+    required this.textColor, this.borderRadius,
+    required this.text, this.fontSize,required this.onPressed}) : super(key: key);
 final Color backGroundColor;
 final Color textColor;
 final BorderRadius?borderRadius;
 final String text;
 final double ?fontSize;
-final void Function()?onPressed;
+final void Function() onPressed;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
