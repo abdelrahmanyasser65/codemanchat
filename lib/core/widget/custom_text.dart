@@ -1,3 +1,4 @@
+import 'package:codemanchat/core/ersources/colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomText extends StatelessWidget {
@@ -8,7 +9,7 @@ class CustomText extends StatelessWidget {
       this.fontSize,
       this.fontWeight,
       this.color,
-
+        this.decoration,
       this.maxLines})
       : super(key: key);
   final String text;
@@ -16,7 +17,7 @@ class CustomText extends StatelessWidget {
   final double? fontSize;
   final FontWeight? fontWeight;
   final Color? color;
-
+  final TextDecoration ?decoration;
   final int? maxLines;
 
   @override
@@ -26,6 +27,8 @@ class CustomText extends StatelessWidget {
       textAlign: textAlign,
       maxLines: maxLines,
       style: TextStyle(
+        decoration:decoration ,
+        decorationColor: ColorManager.primary,
         fontSize: fontSize,
         fontWeight: fontWeight,
         color: color
