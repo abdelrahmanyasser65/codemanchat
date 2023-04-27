@@ -24,11 +24,11 @@ final void Function()?onPressed;
         onPressed: onPressed,
         child: CustomText(
           text: text,
-          textStyle: TextStyle(
+
             color:textColor,
             fontSize: fontSize,
-            fontWeight: FontWightManager.bold,
-          ),
+            fontWeight: FontWeightManager.bold,
+
         ),
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:codemanchat/features/auth/presentation/views/login_view.dart';
 import 'package:codemanchat/features/splash/presentation/splash_view.dart';
 import 'package:go_router/go_router.dart';
 
@@ -11,8 +12,8 @@ abstract class AppRouter{
         builder: (context,state)=>const SplashView(),
       ),
       GoRoute(
-        path: rHomeView,
-        builder: (context,state)=>const SplashView(),
+        path: rLoginView,
+        builder: (context,state)=>const LoginView(),
       ),
       GoRoute(
         path: rHomeView,

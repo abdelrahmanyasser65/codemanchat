@@ -8,7 +8,7 @@ class CustomText extends StatelessWidget {
       this.fontSize,
       this.fontWeight,
       this.color,
-     required this.textStyle,
+
       this.maxLines})
       : super(key: key);
   final String text;
@@ -16,7 +16,7 @@ class CustomText extends StatelessWidget {
   final double? fontSize;
   final FontWeight? fontWeight;
   final Color? color;
-  final TextStyle textStyle;
+
   final int? maxLines;
 
   @override
@@ -25,7 +25,7 @@ class CustomText extends StatelessWidget {
       text,
       textAlign: textAlign,
       maxLines: maxLines,
-      style: textStyle??TextStyle(
+      style: TextStyle(
         fontSize: fontSize,
         fontWeight: fontWeight,
         color: color
