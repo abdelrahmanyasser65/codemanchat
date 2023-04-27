@@ -1,5 +1,6 @@
 import 'package:codemanchat/core/ersources/colors.dart';
 import 'package:codemanchat/core/ersources/fonts.dart';
+import 'package:codemanchat/core/ersources/strings.dart';
 import 'package:codemanchat/core/ersources/values.dart';
 import 'package:codemanchat/core/widget/custom_button.dart';
 import 'package:codemanchat/core/widget/custom_logo.dart';
@@ -26,14 +27,14 @@ final TextEditingController passwordController=TextEditingController();
        Row(
          children: [
            CustomText(
-             text: "Welcome",
+             text:Strings.welcome ,
              fontSize:30,
              color: ColorManager.black,
              fontWeight: FontWeightManager.semiBold,
            ),
            SizedBox(width: Sized.s1,),
            CustomText(
-             text: "Back!",
+             text: Strings.back,
              fontSize:30,
              color: ColorManager.primary,
              fontWeight: FontWeightManager.semiBold,
@@ -44,7 +45,7 @@ final TextEditingController passwordController=TextEditingController();
           height: Sized.s1,
         ),
         CustomText(
-          text: "Login",
+          text:Strings.login,
           fontSize:18,
           color: ColorManager.black,
           fontWeight: FontWeightManager.medium,
@@ -55,7 +56,7 @@ final TextEditingController passwordController=TextEditingController();
         CustomTextField(
             controller: emailController,
             keyboardType: TextInputType.emailAddress,
-            hintText: "E-mail"
+            hintText: Strings.email
         ),
         SizedBox(
           height: Sized.s5,
@@ -63,7 +64,7 @@ final TextEditingController passwordController=TextEditingController();
         CustomTextField(
             controller: passwordController,
             keyboardType: TextInputType.visiblePassword,
-            hintText: "Password"
+            hintText: Strings.password
         ),
         SizedBox(
           height: Sized.s2,
@@ -71,7 +72,7 @@ final TextEditingController passwordController=TextEditingController();
         Align(
           alignment: Alignment.centerRight,
           child: CustomText(
-            text: "Forget Password?",
+            text: Strings.forgetPassword,
             fontWeight: FontWeightManager.semiBold,
             fontSize: 14,
             color: ColorManager.primary,
@@ -84,7 +85,7 @@ final TextEditingController passwordController=TextEditingController();
         CustomButton(
             backGroundColor: ColorManager.primary,
             textColor: ColorManager.white,
-            text: "Login"),
+            text: Strings.login),
         SizedBox(
           height: Sized.s3,
         ),
@@ -92,16 +93,18 @@ final TextEditingController passwordController=TextEditingController();
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CustomText(
-              text: "Don't Have an Account?",
+              text: Strings.notHaveAccount,
               fontSize:13,
               color: ColorManager.black,
               fontWeight: FontWeightManager.bold,
             ),
 
             TextButton(
-              onPressed: (){},
+              onPressed: (){
+
+              },
               child: CustomText(
-                text: "Sign Up",
+                text: Strings.signUp,
                 fontSize:15,
                 color: ColorManager.primary,
                 fontWeight: FontWeightManager.semiBold,
