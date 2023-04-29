@@ -8,7 +8,7 @@ class SignUpView extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
       backgroundColor: ColorManager.white,
-      body: SafeArea(
+      body:const SafeArea(
         child: SignUpViewBody(),
       ),
     );

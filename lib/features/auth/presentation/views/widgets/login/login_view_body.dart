@@ -13,6 +13,7 @@ import 'package:codemanchat/features/auth/presentation/views/widgets/login/welco
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class LoginViewBody extends StatelessWidget {
   const LoginViewBody({Key? key}) : super(key: key);
@@ -22,50 +23,53 @@ class LoginViewBody extends StatelessWidget {
     return BlocBuilder<LoginCubit, LoginState>(
       builder: (context, state) {
         var cubit=LoginCubit();
-        return ListView(
-          padding: EdgeInsets.only(
-              top: Sized.s6,
-              left: Sized.s4,
-              right: Sized.s4
-          ),
-          children: [
-            const CustomLogo(),
-            SizedBox(height: Sized.s8
-              ,),
-            const WelcomeRow(),
-            CenterSideLogin(),
-            CustomButton(
-                onPressed: () {},
-                backGroundColor: ColorManager.primary,
-                textColor: ColorManager.white,
-                text: Strings.login),
-            SizedBox(
-              height: Sized.s2,
+        return ModalProgressHUD(
+          inAsyncCall: state is LoginLoadingState,
+          child: ListView(
+            padding: EdgeInsets.only(
+                top: Sized.s6,
+                left: Sized.s4,
+                right: Sized.s4
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CustomText(
-                  text: Strings.notHaveAccount,
-                  fontSize: 13,
-                  color: ColorManager.black,
-                  fontWeight: FontWeightManager.bold,
-                ),
-
-                TextButton(
-                  onPressed: () {
-                    GoRouter.of(context).push(AppRouter.rSignUp);
-                  },
-                  child: CustomText(
-                    text: Strings.signUp,
-                    fontSize: 15,
-                    color: ColorManager.primary,
-                    fontWeight: FontWeightManager.semiBold,
+            children: [
+              const CustomLogo(),
+              SizedBox(height: Sized.s8
+                ,),
+              const WelcomeRow(),
+              CenterSideLogin(),
+              CustomButton(
+                  onPressed: () {},
+                  backGroundColor: ColorManager.primary,
+                  textColor: ColorManager.white,
+                  text: Strings.login),
+              SizedBox(
+                height: Sized.s2,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CustomText(
+                    text: Strings.notHaveAccount,
+                    fontSize: 13,
+                    color: ColorManager.black,
+                    fontWeight: FontWeightManager.bold,
                   ),
-                ),
-              ],
-            ),
-          ],
+
+                  TextButton(
+                    onPressed: () {
+                      GoRouter.of(context).push(AppRouter.rSignUp);
+                    },
+                    child: CustomText(
+                      text: Strings.signUp,
+                      fontSize: 15,
+                      color: ColorManager.primary,
+                      fontWeight: FontWeightManager.semiBold,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         );
       },
     );

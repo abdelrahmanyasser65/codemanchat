@@ -21,7 +21,7 @@ class SignUpCubit extends Cubit<SignUpState> {
 
 
   Future<void> signUpWithEmailPassword(BuildContext context) async {
-    {
+
       emit(SignUpLoadingState());
          try {
            await userSignUp();
@@ -46,7 +46,8 @@ class SignUpCubit extends Cubit<SignUpState> {
            emit(SignUpErrorState(e.toString()));
          }
        }
-  }
+
+
 
   void signUpWithGoogle() async {
     var auth = FirebaseAuth.instance;
