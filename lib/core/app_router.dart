@@ -1,5 +1,6 @@
 import 'package:codemanchat/features/auth/presentation/views/login_view.dart';
 import 'package:codemanchat/features/auth/presentation/views/sign_up_view.dart';
+import 'package:codemanchat/features/chat/presentation/views/chat_view.dart';
 import 'package:codemanchat/features/splash/presentation/splash_view.dart';
 import 'package:go_router/go_router.dart';
 
@@ -7,6 +8,7 @@ abstract class AppRouter{
   static const rHomeView="/HomeView";
   static const rLoginView="/LoginView";
   static const rSignUp="/SignUpView";
+  static const rChat="/ChatView";
   static final router=GoRouter(
     routes: [
       GoRoute(
@@ -22,8 +24,8 @@ abstract class AppRouter{
         builder: (context,state)=>const SignUpView(),
       ),
       GoRoute(
-        path: rHomeView,
-        builder: (context,state)=>const SplashView(),
+        path: rChat,
+        builder: (context,state)=>const ChatView(),
       ),
     ],
   );
