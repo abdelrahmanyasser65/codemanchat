@@ -15,7 +15,7 @@ class ChatView extends StatelessWidget {
         preferredSize: Size.fromHeight(Sized.s7),
         child: Container(),
       ),
-      body:const SafeArea(
+      body: SafeArea(
         child: ChatViewBody(),
       ),
     );

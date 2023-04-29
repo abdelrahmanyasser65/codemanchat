@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 class CustomTextField extends StatelessWidget {
   const CustomTextField(
       {Key? key,
+        this.suffixIcon,
       required this.controller,
       this.onChanged,
       required this.keyboardType,
@@ -18,7 +19,7 @@ class CustomTextField extends StatelessWidget {
   final bool obscureText;
   final int maxLines;
   final String hintText;
-
+  final Widget ?suffixIcon;
   @override
   Widget build(BuildContext context) {
     return TextField(
@@ -29,6 +30,7 @@ class CustomTextField extends StatelessWidget {
       obscureText: obscureText,
       maxLines: maxLines,
       decoration: InputDecoration(
+        suffixIcon:suffixIcon,
         hintText: hintText,
         hintStyle: TextStyle(fontSize: 15, color: ColorManager.hintTextColor),
         fillColor: ColorManager.lightGrey,
