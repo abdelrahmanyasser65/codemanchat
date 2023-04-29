@@ -7,10 +7,9 @@ import '../../../../../../core/ersources/colors.dart';
 import '../../../../../../core/ersources/fonts.dart';
 import '../../../../../../core/ersources/values.dart';
 class CenterSideLogin extends StatelessWidget {
-   CenterSideLogin({Key? key}) : super(key: key);
-  final TextEditingController emailController=TextEditingController();
-  final TextEditingController passwordController=TextEditingController();
-
+   const CenterSideLogin({Key? key, required this.emailController, required this.passwordController}) : super(key: key);
+ final TextEditingController emailController;
+ final TextEditingController passwordController;
   @override
   Widget build(BuildContext context) {
     return Column(

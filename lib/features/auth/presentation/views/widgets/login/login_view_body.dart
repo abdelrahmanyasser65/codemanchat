@@ -5,6 +5,7 @@ import 'package:codemanchat/core/ersources/strings.dart';
 import 'package:codemanchat/core/ersources/values.dart';
 import 'package:codemanchat/core/widget/custom_button.dart';
 import 'package:codemanchat/core/widget/custom_logo.dart';
+import 'package:codemanchat/core/widget/custom_snack_bar.dart';
 import 'package:codemanchat/core/widget/custom_text.dart';
 import 'package:codemanchat/features/auth/presentation/view_model/login_cubit/login_cubit.dart';
 import 'package:codemanchat/features/auth/presentation/view_model/login_cubit/login_state.dart';
@@ -22,23 +23,30 @@ class LoginViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<LoginCubit, LoginState>(
       builder: (context, state) {
-        var cubit=LoginCubit();
+        var cubit = LoginCubit();
         return ModalProgressHUD(
           inAsyncCall: state is LoginLoadingState,
           child: ListView(
-            padding: EdgeInsets.only(
-                top: Sized.s6,
-                left: Sized.s4,
-                right: Sized.s4
-            ),
+            padding:
+                EdgeInsets.only(top: Sized.s6, left: Sized.s4, right: Sized.s4),
             children: [
               const CustomLogo(),
-              SizedBox(height: Sized.s8
-                ,),
+              SizedBox(
+                height: Sized.s8,
+              ),
               const WelcomeRow(),
-              CenterSideLogin(),
+              CenterSideLogin(
+                emailController: cubit.emailController,
+                passwordController: cubit.passwordController,
+              ),
               CustomButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    (cubit.emailController.text.isNotEmpty &&
+                            cubit.passwordController.text.isNotEmpty)
+                        ? cubit.loginWithEmailPassword(context)
+                        : showSnackBar(
+                            context: context, text: "Enter Your data");
+                  },
                   backGroundColor: ColorManager.primary,
                   textColor: ColorManager.white,
                   text: Strings.login),
@@ -54,7 +62,6 @@ class LoginViewBody extends StatelessWidget {
                     color: ColorManager.black,
                     fontWeight: FontWeightManager.bold,
                   ),
-
                   TextButton(
                     onPressed: () {
                       GoRouter.of(context).push(AppRouter.rSignUp);
@@ -74,6 +81,4 @@ class LoginViewBody extends StatelessWidget {
       },
     );
   }
-
-
 }
