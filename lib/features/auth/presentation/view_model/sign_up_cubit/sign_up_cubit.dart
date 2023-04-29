@@ -10,8 +10,6 @@ class SignUpCubit extends Cubit<SignUpState> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  bool isLoading=false;
-
 
   Future<void> userSignUp() async {
     UserCredential user = await FirebaseAuth.instance
@@ -64,7 +62,6 @@ class SignUpCubit extends Cubit<SignUpState> {
     UserCredential authResult = await auth.signInWithCredential(
         authCredential);
     User? user = authResult.user;
-    print('email${user!.email}');
   }
 }
 
