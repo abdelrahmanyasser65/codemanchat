@@ -1,6 +1,7 @@
 import 'package:codemanchat/core/app_router.dart';
 import 'package:codemanchat/core/ersources/colors.dart';
 import 'package:codemanchat/core/ersources/fonts.dart';
+import 'package:codemanchat/core/ersources/images.dart';
 import 'package:codemanchat/core/ersources/strings.dart';
 import 'package:codemanchat/core/ersources/values.dart';
 import 'package:codemanchat/core/widget/custom_button.dart';
@@ -75,6 +76,28 @@ class LoginViewBody extends StatelessWidget {
                   ),
                 ],
               ),
+              const Divider(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CustomText(
+                    text: "OR sign up with ",
+                    fontSize: 16,
+                    fontWeight: FontWeightManager.semiBold,
+                    color: ColorManager.primary,
+                  ),
+                  TextButton(
+                      onPressed: () {
+                        cubit.signUpWithGoogle();
+                        GoRouter.of(context).pushReplacement(AppRouter.rChat);
+                      },
+                      child: Image.asset(
+                        Images.googleIcon,
+                        fit: BoxFit.cover,
+                        width: Sized.s3,
+                      ))
+                ],
+              )
             ],
           ),
         );

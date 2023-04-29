@@ -3,6 +3,7 @@ import 'package:hexcolor/hexcolor.dart';
 
 class ColorManager{
   static Color primary=HexColor("#F58634");
+  static Color secondPrimary=HexColor("#FF6600");
   static Color black=Colors.black;
   static Color white=Colors.white;
   static Color grey=Colors.grey;

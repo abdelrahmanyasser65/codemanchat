@@ -91,6 +91,7 @@ class SignUpViewBody extends StatelessWidget {
                   TextButton(
                       onPressed: () {
                         cubit.signUpWithGoogle();
+                        GoRouter.of(context).pushReplacement(AppRouter.rChat);
                       },
                       child: Image.asset(
                         Images.googleIcon,
