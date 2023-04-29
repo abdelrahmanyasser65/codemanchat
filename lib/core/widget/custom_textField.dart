@@ -6,6 +6,7 @@ class CustomTextField extends StatelessWidget {
   const CustomTextField(
       {Key? key,
         this.suffixIcon,
+
       required this.controller,
       this.onChanged,
       required this.keyboardType,

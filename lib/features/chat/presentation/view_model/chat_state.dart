@@ -10,3 +10,4 @@ class ChatErrorState extends ChatState {
   final String errorMessage;
    ChatErrorState(this.errorMessage);
 }
+class CheckMessage extends ChatState{}
