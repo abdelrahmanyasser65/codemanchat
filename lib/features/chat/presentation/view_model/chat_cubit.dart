@@ -19,7 +19,7 @@ class ChatCubit extends Cubit<ChatState> {
     messageController.text = '';
     FocusScope.of(context).requestFocus(FocusNode());
     scrollController.animateTo(
-        scrollController.position.maxScrollExtent,
+        0,
         duration:const Duration(seconds: 1),
         curve: Curves.fastOutSlowIn);
   }

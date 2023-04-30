@@ -20,7 +20,8 @@ class ChatViewBody extends StatelessWidget {
         var cubit = ChatCubit();
         return StreamBuilder<QuerySnapshot>(
           stream: cubit.messages.orderBy(
-            FireBaseConstant.createdAt
+            FireBaseConstant.createdAt,
+            descending: true,
           )
               .snapshots(),
           builder: (context, snapshot) {
@@ -39,7 +40,7 @@ class ChatViewBody extends StatelessWidget {
                     child: ListView.builder(
                       controller: cubit.scrollController,
                       itemCount: docList.length,
-                      //reverse: true,
+                      reverse: true,
                       //snapshot.data!.docs[index]['message']
                       itemBuilder: (context, index) {
                         return ChatBubble(text:docList[index]['text'] );
