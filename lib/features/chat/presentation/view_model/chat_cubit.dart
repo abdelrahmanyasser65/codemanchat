@@ -12,7 +12,9 @@ class ChatCubit extends Cubit<ChatState> {
   CollectionReference messages =
       FirebaseFirestore.instance.collection(FireBaseConstant.messageCollection);
   Future<void> addMessage(val) {
-    return messages.add({'text': val});
+    return messages.add({
+      'createdAt':DateTime.now(),
+      'text': val});
   }
 
 
