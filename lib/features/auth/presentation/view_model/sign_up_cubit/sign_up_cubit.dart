@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:codemanchat/core/app_router.dart';
+import 'package:codemanchat/core/firebase/firebase_constants.dart';
 import 'package:codemanchat/core/widget/custom_snack_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,8 +30,13 @@ class SignUpCubit extends Cubit<SignUpState> {
          try {
            await userSignUp();
            emit(SignUpSuccessState());
+           messages.add({
+             'email':emailController.text,
+             'name':nameController.text,
+           });
            showSnackBar(context: context, text: "Success");
            GoRouter.of(context).pushReplacement(AppRouter.rChat);
+
 
          } on FirebaseAuthException catch (e) {
 
@@ -52,7 +59,7 @@ class SignUpCubit extends Cubit<SignUpState> {
 
 
 
-  void signUpWithGoogle() async {
+  void signUpWithGoogle(context) async {
     var auth = FirebaseAuth.instance;
     GoogleSignIn googleSignIn = GoogleSignIn();
     GoogleSignInAccount? googleSignInAccount = await googleSignIn
@@ -66,6 +73,15 @@ class SignUpCubit extends Cubit<SignUpState> {
     UserCredential authResult = await auth.signInWithCredential(
         authCredential);
     User? user = authResult.user;
+    messages.add({
+      'email':user!.email,
+      'name':user.displayName,
+    });
+    GoRouter.of(context).pushReplacement(AppRouter.rChat);
   }
+
+  CollectionReference messages=FirebaseFirestore.instance.
+  collection(FireBaseConstant.userCollection);
+
 }
 

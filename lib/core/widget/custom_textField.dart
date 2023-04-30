@@ -6,7 +6,7 @@ class CustomTextField extends StatelessWidget {
   const CustomTextField(
       {Key? key,
         this.suffixIcon,
-
+        this.onSubmitted,
       required this.controller,
       this.onChanged,
       required this.keyboardType,
@@ -16,6 +16,7 @@ class CustomTextField extends StatelessWidget {
       : super(key: key);
   final TextEditingController controller;
   final Function(String)? onChanged;
+  final Function(String)?onSubmitted;
   final TextInputType keyboardType;
   final bool obscureText;
   final int maxLines;
@@ -30,6 +31,7 @@ class CustomTextField extends StatelessWidget {
       cursorColor: ColorManager.grey,
       obscureText: obscureText,
       maxLines: maxLines,
+      onSubmitted:onSubmitted ,
       decoration: InputDecoration(
         suffixIcon:suffixIcon,
         hintText: hintText,

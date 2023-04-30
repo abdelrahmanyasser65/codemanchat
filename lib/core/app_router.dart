@@ -25,7 +25,7 @@ abstract class AppRouter{
       ),
       GoRoute(
         path: rChat,
-        builder: (context,state)=>const ChatView(),
+        builder: (context,state)=> ChatView(),
       ),
     ],
   );

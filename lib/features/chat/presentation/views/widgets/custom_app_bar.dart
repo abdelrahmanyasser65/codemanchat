@@ -12,6 +12,7 @@ class CustomAppBar extends PreferredSize{
   PreferredSizeWidget build(BuildContext context) {
     return AppBar(
       backgroundColor: ColorManager.primary,
+      automaticallyImplyLeading: false,
       title:Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

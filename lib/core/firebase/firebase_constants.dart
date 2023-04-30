@@ -1,6 +1,7 @@
 abstract class FireBaseConstant{
   static const userCollection="users";
-  static const messageCollection="message";
+  static const messageCollection="messages";
+  static const textMessage="text";
   static const nickName="nickName";
   static const aboutMe="aboutMe";
   static const  photoUrl="photoUrl";
