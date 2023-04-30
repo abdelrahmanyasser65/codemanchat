@@ -14,12 +14,13 @@ class SignUpCubit extends Cubit<SignUpState> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
+String ?email;
   Future<void> userSignUp() async {
     UserCredential user = await FirebaseAuth.instance
         .createUserWithEmailAndPassword(
         email: emailController.text,
         password: passwordController.text);
+    email=user.user!.email;
   }
 
 
@@ -35,8 +36,7 @@ class SignUpCubit extends Cubit<SignUpState> {
              'name':nameController.text,
            });
            showSnackBar(context: context, text: "Success");
-           GoRouter.of(context).pushReplacement(AppRouter.rChat);
-
+           GoRouter.of(context).pushReplacement(AppRouter.rChat,extra:email );
 
          } on FirebaseAuthException catch (e) {
 

@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import '../../../../core/ersources/values.dart';
 
 class ChatView extends StatelessWidget {
-  const ChatView({Key? key}) : super(key: key);
-
+  const ChatView({Key? key, required this.id}) : super(key: key);
+final String id;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,8 +15,10 @@ class ChatView extends StatelessWidget {
         preferredSize: Size.fromHeight(Sized.s7),
         child: Container(),
       ),
-      body: SafeArea(
-        child: ChatViewBody(),
+      body:  SafeArea(
+        child: ChatViewBody(
+          id: id,
+        ),
       ),
     );
   }

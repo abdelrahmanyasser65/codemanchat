@@ -10,12 +10,13 @@ class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitialState());
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
+String?email;
   Future<void>login()async{
     UserCredential userCredential=await FirebaseAuth.instance
         .signInWithEmailAndPassword(
         email: emailController.text,
         password: passwordController.text);
+    email=userCredential.user!.email;
   }
 
   Future<void>loginWithEmailPassword(BuildContext context)async{
@@ -24,7 +25,8 @@ class LoginCubit extends Cubit<LoginState> {
       await login();
       emit(LoginSuccessState());
       showSnackBar(context: context, text: "Success");
-      GoRouter.of(context).pushReplacement(AppRouter.rChat);
+      GoRouter.of(context).pushReplacement(AppRouter.rChat,extra:email );
+
     }on FirebaseAuthException catch(e){
       if (e.code == "wrong-password") {
         showSnackBar(

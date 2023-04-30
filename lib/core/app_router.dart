@@ -25,7 +25,12 @@ abstract class AppRouter{
       ),
       GoRoute(
         path: rChat,
-        builder: (context,state)=> ChatView(),
+        builder: (context,state){
+          String id=state.extra as String;
+          return ChatView(
+            id:id
+          );
+        }
       ),
     ],
   );

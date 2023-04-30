@@ -5,13 +5,16 @@ import 'package:codemanchat/core/firebase/firebase_constants.dart';
 import 'package:codemanchat/core/widget/custom_textField.dart';
 import 'package:codemanchat/features/chat/presentation/view_model/chat_cubit.dart';
 import 'package:codemanchat/features/chat/presentation/views/widgets/chat_bubble.dart';
+import 'package:codemanchat/features/chat/presentation/views/widgets/form_send_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ChatViewBody extends StatelessWidget {
   const ChatViewBody({
     Key? key,
+    required this.id,
   }) : super(key: key);
+  final String id;
 
   @override
   Widget build(BuildContext context) {
@@ -19,18 +22,18 @@ class ChatViewBody extends StatelessWidget {
       builder: (context, state) {
         var cubit = ChatCubit();
         return StreamBuilder<QuerySnapshot>(
-          stream: cubit.messages.orderBy(
-            FireBaseConstant.createdAt,
-            descending: true,
-          )
+          stream: cubit.messages
+              .orderBy(
+                FireBaseConstant.createdAt,
+                descending: true,
+              )
               .snapshots(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               final List<QueryDocumentSnapshot<Object?>> docSnapList =
                   snapshot.data?.docs ?? [];
               final List docList = docSnapList
-                  .map((QueryDocumentSnapshot<Object?>
-                          queryDocumentSnapshot) =>
+                  .map((QueryDocumentSnapshot<Object?> queryDocumentSnapshot) =>
                       queryDocumentSnapshot.data())
                   .toList();
 
@@ -41,38 +44,16 @@ class ChatViewBody extends StatelessWidget {
                       controller: cubit.scrollController,
                       itemCount: docList.length,
                       reverse: true,
-                      //snapshot.data!.docs[index]['message']
                       itemBuilder: (context, index) {
-                        return ChatBubble(text:docList[index]['text'] );
+                        return
+                          docList[index]['id']==id?
+                          ChatBubble(text: docList[index]['text']):
+                              AnotherChatBubble(text: docList[index]['text'])
+                        ;
                       },
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: Sized.s2,
-                        right: Sized.s2,
-                        top: Sized.s1,
-                        bottom: Sized.s2),
-                    child: CustomTextField(
-                      controller: cubit.messageController,
-                      keyboardType: TextInputType.text,
-                      hintText: 'Message',
-                      onSubmitted: (val) {
-                        cubit.addMessage(val,context);
-
-                      },
-                      suffixIcon: IconButton(
-                        onPressed: () {
-                          cubit.addMessage(cubit.messageController.text,context);
-
-                        },
-                        icon: Icon(
-                          Icons.send,
-                          color: ColorManager.primary,
-                        ),
-                      ),
-                    ),
-                  )
+                  FormSendMessage(cubit: cubit, id: id),
                 ],
               );
             } else {

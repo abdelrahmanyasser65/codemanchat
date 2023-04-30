@@ -39,3 +39,39 @@ final String text;
     );
   }
 }
+
+class AnotherChatBubble extends StatelessWidget {
+  const AnotherChatBubble({Key? key, required this.text}) : super(key: key);
+  final String text;
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.centerRight,
+      child: Container(
+        padding: EdgeInsets.all(
+            Sized.s2
+        ),
+        margin: EdgeInsets.only(
+          top: Sized.s2,
+          left: Sized.s2,
+          right: Sized.s2,
+        ),
+        decoration: BoxDecoration(
+            color: Colors.teal,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(Sized.s2),
+              topRight: Radius.circular(Sized.s2),
+              bottomLeft:Radius.circular(Sized.s2),
+            )
+        ),
+
+        child: CustomText(
+
+          text: text,
+          color: ColorManager.white,
+          fontWeight: FontWeightManager.semiBold,
+        ),
+      ),
+    );
+  }
+}
