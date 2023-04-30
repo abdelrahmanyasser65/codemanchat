@@ -8,15 +8,19 @@ part 'chat_state.dart';
 class ChatCubit extends Cubit<ChatState> {
   ChatCubit() : super(ChatInitialState());
   bool isTyping = false;
+  final scrollController = ScrollController();
+
   final TextEditingController messageController = TextEditingController();
   CollectionReference messages =
       FirebaseFirestore.instance.collection(FireBaseConstant.messageCollection);
-  Future<void> addMessage(val) {
-    return messages.add({
-      'createdAt':DateTime.now(),
-      'text': val});
+
+  addMessage(val, context) {
+    messages.add({'createdAt': DateTime.now(), 'text': val});
+    messageController.text = '';
+    FocusScope.of(context).requestFocus(FocusNode());
+    scrollController.animateTo(
+        scrollController.position.maxScrollExtent,
+        duration:const Duration(seconds: 1),
+        curve: Curves.fastOutSlowIn);
   }
-
-
-
 }

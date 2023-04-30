@@ -37,6 +37,7 @@ class ChatViewBody extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ListView.builder(
+                      controller: cubit.scrollController,
                       itemCount: docList.length,
                       //reverse: true,
                       //snapshot.data!.docs[index]['message']
@@ -56,14 +57,13 @@ class ChatViewBody extends StatelessWidget {
                       keyboardType: TextInputType.text,
                       hintText: 'Message',
                       onSubmitted: (val) {
-                        cubit.addMessage(val);
-                        cubit.messageController.text='';
+                        cubit.addMessage(val,context);
+
                       },
                       suffixIcon: IconButton(
                         onPressed: () {
-                          cubit.addMessage(cubit.messageController.text);
-                          cubit.messageController.text='';
-                          FocusScope.of(context).requestFocus(FocusNode());
+                          cubit.addMessage(cubit.messageController.text,context);
+
                         },
                         icon: Icon(
                           Icons.send,
